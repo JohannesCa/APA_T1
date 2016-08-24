@@ -11,11 +11,10 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	cout << "Hello World\n\nYou tipped: ";
-	for(int i = 0; i < argc; i++){
-		cout << argv[i];
-	}
-
+	std::cout << "Have " << argc << " arguments:" << std::endl;
+	for (int i = 0; i < argc; ++i) {
+		std::cout << argv[i] << std::endl;
+    }
 
 	return 0;
 }
