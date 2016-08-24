@@ -9,7 +9,7 @@
 #define INSERTION_H_
 
 #include <iostream>
-#include <list>
+#include <vector>
 #include <fstream>
 
 using namespace std;
@@ -18,9 +18,9 @@ namespace Sort {
 
 class Insertion {
 private:
-	list<int> *_input;
-	list<int> *_output;
+	vector<int> *_input;
 	void Sort(void);
+	void Swap(vector<int>::iterator a, vector<int>::iterator b);
 
 public:
 	Insertion(string filePath);
