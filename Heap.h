@@ -12,6 +12,9 @@
 #include <vector>
 #include <fstream>
 #include <math.h>
+#include <time.h>
+#include <linux/input.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -19,6 +22,9 @@ namespace Sort {
 
 class Heap {
 private:
+	unsigned long long int _loadTimeUs;
+	unsigned long long int _processTimeUs;
+	string _fileName;
 	vector<int> *_input;
 	int FindParent(int i);
 	int FindLChild(int i);
@@ -28,8 +34,10 @@ private:
 	void SiftDown(int Begin, int End);
 
 public:
-	Heap(string filePath);
+	Heap(string fName, string fPath);
 	~Heap();
+	void genOutput(void);
+	void genLog(void);
 };
 
 } /* namespace Sort */

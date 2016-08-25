@@ -9,20 +9,33 @@
 
 namespace Sort {
 
-Heap::Heap(string filePath)
+Heap::Heap(string fName, string fPath): _fileName(fName)
 {
 	this->_input = new vector<int>;
 
 	ifstream input;
 	string line;
 
+	string filePath = fPath + fName;
+
+	struct timeval initTime, finalTime;
+	gettimeofday(&initTime, NULL);
+
 	input.open(filePath, std::ios::in);
 	while(getline(input, line))
 		this->_input->push_back(stoi(line));
 
 	input.close();
+	gettimeofday(&finalTime, NULL);
+	this->_loadTimeUs = (finalTime.tv_sec - initTime.tv_sec) * 1000000 + (finalTime.tv_usec - initTime.tv_usec);
 
+	gettimeofday(&initTime, NULL);
 	this->Sort();
+
+	gettimeofday(&finalTime, NULL);
+	this->_processTimeUs = (finalTime.tv_sec - initTime.tv_sec) * 1000000 + (finalTime.tv_usec - initTime.tv_usec);
+
+	this->genOutput();
 }
 
 
@@ -99,6 +112,19 @@ void Heap::SiftDown(int Begin, int End)
 		}
 
 	}
+}
+
+
+void Heap::genOutput(void)
+{
+	ofstream output;
+	string outFile = this->_fileName + ".out";
+	string path = "Outputs/" + outFile;
+
+	output.open(path.c_str(), std::ios::out);
+	for(unsigned int i = 0; i < this->_input->size(); i++)
+		output << to_string((*this->_input)[i]) << endl;
+	output.close();
 }
 
 } /* namespace Sort */

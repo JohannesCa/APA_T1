@@ -9,7 +9,7 @@
 
 namespace Sort {
 
-Selection::Selection(string filePath) // Lembrar de passar o caminho completo
+Selection::Selection(string fName, string fPath): _fileName(fName) // Lembrar de passar o caminho completo
 {
 	this->_input = new vector<int>;
 	this->_output = new vector<int>;
@@ -17,13 +17,27 @@ Selection::Selection(string filePath) // Lembrar de passar o caminho completo
 	ifstream input;
 	string line;
 
+	string filePath = fPath + fName;
+
+	struct timeval initTime, finalTime;
+	gettimeofday(&initTime, NULL);
+
 	input.open(filePath, std::ios::in);
 	while(getline(input, line))
 		this->_input->push_back(stoi(line));
 
 	input.close();
 
+	gettimeofday(&finalTime, NULL);
+	this->_loadTimeUs = (finalTime.tv_sec - initTime.tv_sec) * 1000000 + (finalTime.tv_usec - initTime.tv_usec);
+
+	gettimeofday(&initTime, NULL);
 	this->Sort();
+	gettimeofday(&finalTime, NULL);
+
+	this->_processTimeUs = (finalTime.tv_sec - initTime.tv_sec) * 1000000 + (finalTime.tv_usec - initTime.tv_usec);
+
+	this->genOutput();
 }
 
 
@@ -52,9 +66,16 @@ void Selection::Sort(void)
 }
 
 
-vector<int> Selection::getOrdered(void) // Get a copy of the ordered vector
+void Selection::genOutput(void)
 {
-	return *(this->_output);
+	ofstream output;
+	string outFile = this->_fileName + ".out";
+	string path = "Outputs/" + outFile;
+
+	output.open(path.c_str(), std::ios::out);
+	for(unsigned int i = 0; i < this->_output->size(); i++)
+		output << to_string((*this->_output)[i]) << endl;
+	output.close();
 }
 
 

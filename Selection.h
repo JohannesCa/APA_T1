@@ -11,6 +11,9 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <time.h>
+#include <linux/input.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -18,14 +21,18 @@ namespace Sort {
 
 class Selection {
 private:
+	unsigned long long int _loadTimeUs;
+	unsigned long long int _processTimeUs;
+	string _fileName;
 	vector<int> *_input;
 	vector<int> *_output;
 	void Sort(void);
 
 public:
-	Selection(string file);
-	vector<int> getOrdered(void);
+	Selection(string fName, string fPath);
 	~Selection();
+	void genOutput(void);
+	void genLog(void);
 };
 
 } /* namespace Sort */
