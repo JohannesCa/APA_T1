@@ -9,8 +9,11 @@
 #define QUICK_H_
 
 #include <iostream>
+#include <time.h>
 #include <vector>
 #include <fstream>
+#include <linux/input.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -18,14 +21,20 @@ namespace Sort {
 
 class Quick {
 private:
+	unsigned long long int _loadTimeUs;
+	unsigned long long int _processTimeUs;
+	string _fileName;
+	string GetTime(void);
 	vector<int> *_input;
 	void Swap(int a, int b);
 	void Sort(int Lo, int Hi);
 	int Part(int Lo, int Hi);
 
 public:
-	Quick(string filePath);
+	Quick(string fName, string fPath);
 	~Quick();
+	void genOutput(void);
+	void genLog(void);
 };
 
 } /* namespace Sort */

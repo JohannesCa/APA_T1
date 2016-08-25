@@ -9,10 +9,10 @@
 #define HEAP_H_
 
 #include <iostream>
+#include <time.h>
 #include <vector>
 #include <fstream>
 #include <math.h>
-#include <time.h>
 #include <linux/input.h>
 #include <sys/types.h>
 
@@ -25,6 +25,7 @@ private:
 	unsigned long long int _loadTimeUs;
 	unsigned long long int _processTimeUs;
 	string _fileName;
+	string GetTime(void);
 	vector<int> *_input;
 	int FindParent(int i);
 	int FindLChild(int i);

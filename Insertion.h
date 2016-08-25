@@ -9,8 +9,11 @@
 #define INSERTION_H_
 
 #include <iostream>
+#include <time.h>
 #include <vector>
 #include <fstream>
+#include <linux/input.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -18,13 +21,19 @@ namespace Sort {
 
 class Insertion {
 private:
+	unsigned long long int _loadTimeUs;
+	unsigned long long int _processTimeUs;
+	string _fileName;
+	string GetTime(void);
 	vector<int> *_input;
 	void Sort(void);
 	void Swap(vector<int>::iterator a, vector<int>::iterator b);
 
 public:
-	Insertion(string filePath);
+	Insertion(string fName, string fPath);
 	~Insertion(void);
+	void genOutput(void);
+	void genLog(void);
 };
 
 } /* namespace Sort */

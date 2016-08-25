@@ -9,8 +9,11 @@
 #define MERGE_H_
 
 #include <iostream>
+#include <time.h>
 #include <vector>
 #include <fstream>
+#include <linux/input.h>
+#include <sys/types.h>
 
 using namespace std;
 
@@ -18,6 +21,10 @@ namespace Sort {
 
 class Merge {
 private:
+	unsigned long long int _loadTimeUs;
+	unsigned long long int _processTimeUs;
+	string _fileName;
+	string GetTime(void);
 	vector<int> *_input;
 	vector<int> *_output;
 	void Sort(void);
@@ -25,8 +32,10 @@ private:
 	void Comp(int Begin, int Middle, int End);
 
 public:
-	Merge(string filePath);
+	Merge(string fName, string fPath);
 	~Merge();
+	void genOutput(void);
+	void genLog(void);
 };
 
 } /* namespace Sort */

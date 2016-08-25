@@ -9,9 +9,9 @@
 #define SELECTION_H_
 
 #include <iostream>
+#include <time.h>
 #include <vector>
 #include <fstream>
-#include <time.h>
 #include <linux/input.h>
 #include <sys/types.h>
 
@@ -24,6 +24,7 @@ private:
 	unsigned long long int _loadTimeUs;
 	unsigned long long int _processTimeUs;
 	string _fileName;
+	string GetTime(void);
 	vector<int> *_input;
 	vector<int> *_output;
 	void Sort(void);

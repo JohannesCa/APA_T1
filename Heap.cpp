@@ -127,4 +127,40 @@ void Heap::genOutput(void)
 	output.close();
 }
 
+
+void Heap::genLog(void)
+{
+	ofstream output;
+	string fName = "Logs/Heap.log";
+	string Date = this->GetTime();
+	string Log = "Generated in: " + Date +
+				 "\nInput file name: " + this->_fileName +
+				 "\nLoading time (us): " + to_string(this->_loadTimeUs) +
+				 "\nProcessing time (us): " + to_string(this->_processTimeUs) + "\n\n";
+
+	output.open(fName.c_str(), std::ios::out|std::ios::app);
+	output << Log;
+	output.close();
+}
+
+
+string Heap::GetTime(void)
+{
+	const string WeekDay[]={"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+	const string MonthName[]={"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+	time_t Time = time(NULL);
+	struct tm *aTime = localtime(&Time);
+
+	int day = aTime->tm_mday;
+	int wday = aTime->tm_wday;
+	int month = aTime->tm_mon;
+	int year = aTime->tm_year + 1900;
+	int hour = aTime->tm_hour;
+	int min = aTime->tm_min;
+	int sec = aTime->tm_sec;
+
+	return WeekDay[wday] + ", " + to_string(day) + " " + MonthName[month] + " " + to_string(year) + " " + to_string(hour) + ":" + to_string(min) + ":" + to_string(sec) + " BRT";
+}
+
 } /* namespace Sort */

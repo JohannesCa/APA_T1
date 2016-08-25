@@ -28,30 +28,44 @@ void help(const char *prog)
 
 int main(int argc, char** argv)
 {
-	/*
+
 	if(argc != 3){
 		help(argv[0]);
 		return -1;
 	}
-	*/
-	string method = "heap";//argv[1];
-	string fName = "90.100000.1.in";//argv[2];
+
+	string method = argv[1];
+	string fName = argv[2];
 	string fPath = "Resources/";
+
+	string filePath = fPath + fName;
+	ifstream input(filePath.c_str());
+	if(!input){
+		cerr << "[ERROR] Could not find file <" << fName << ">\n";
+		help(argv[0]);
+		return -1;
+	}
+
 
 	if(method == "selection"){
 		Sort::Selection sort(fName, fPath);
+		sort.genLog();
 
 	}else if(method == "insertion"){
 		Sort::Insertion sort(fName, fPath);
+		sort.genLog();
 
 	}else if(method == "merge"){
 		Sort::Merge sort(fName, fPath);
+		sort.genLog();
 
 	}else if(method == "quick"){
 		Sort::Quick sort(fName, fPath);
+		sort.genLog();
 
 	}else if(method == "heap"){
 		Sort::Heap sort(fName, fPath);
+		sort.genLog();
 
 	}else{
 		help(argv[0]);
