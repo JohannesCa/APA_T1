@@ -9,6 +9,8 @@
 #include "Selection.h"
 #include "Insertion.h"
 #include "Merge.h"
+#include "Quick.h"
+#include "Heap.h"
 
 using namespace std;
 
