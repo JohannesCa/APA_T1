@@ -22,6 +22,8 @@ Selection::Selection(string filePath) // Lembrar de passar o caminho completo
 		this->_input->push_back(stoi(line));
 
 	input.close();
+
+	this->Sort();
 }
 
 

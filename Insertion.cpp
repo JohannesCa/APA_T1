@@ -21,6 +21,8 @@ Insertion::Insertion(string filePath)
 		this->_input->push_back(stoi(line));
 
 	input.close();
+
+	this->Sort();
 }
 
 

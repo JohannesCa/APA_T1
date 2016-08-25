@@ -1,12 +1,12 @@
 /*
- * Selection.h
+ * Merge.h
  *
  *  Created on: 24 de ago de 2016
  *      Author: johannes
  */
 
-#ifndef SELECTION_H_
-#define SELECTION_H_
+#ifndef MERGE_H_
+#define MERGE_H_
 
 #include <iostream>
 #include <vector>
@@ -16,18 +16,19 @@ using namespace std;
 
 namespace Sort {
 
-class Selection {
+class Merge {
 private:
 	vector<int> *_input;
 	vector<int> *_output;
 	void Sort(void);
+	void Split(void);
+	void Comp(void);
 
 public:
-	Selection(string file);
-	vector<int> getOrdered(void);
-	~Selection();
+	Merge(string filePath);
+	~Merge();
 };
 
 } /* namespace Sort */
 
-#endif /* SELECTION_H_ */
+#endif /* MERGE_H_ */

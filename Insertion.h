@@ -24,7 +24,7 @@ private:
 
 public:
 	Insertion(string filePath);
-	~Insertion();
+	~Insertion(void);
 };
 
 } /* namespace Sort */
