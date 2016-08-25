@@ -21,8 +21,8 @@ private:
 	vector<int> *_input;
 	vector<int> *_output;
 	void Sort(void);
-	void Split(void);
-	void Comp(void);
+	void Split(int Begin, int End);
+	void Comp(int Begin, int Middle, int End);
 
 public:
 	Merge(string filePath);

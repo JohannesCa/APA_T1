@@ -35,19 +35,35 @@ Merge::~Merge()
 
 void Merge::Sort()
 {
-
+	this->_output->resize(this->_input->size());
+	this->Split(0, this->_input->size());
 }
 
 
-void Merge::Split()
+void Merge::Split(int Begin, int End)
 {
-
+	if(End - Begin >= 2){
+		unsigned int Middle = (Begin + End)/2;
+		this->Split(Begin, Middle);
+		this->Split(Middle, End);
+		this->Comp(Begin, Middle, End);
+	}
 }
 
 
-void Merge::Comp()
+void Merge::Comp(int Begin, int Middle, int End)
 {
+	int i = Begin;
+	int j = Middle;
 
+	for(int k = Begin; k < End; k++){
+		if((i < Middle) && ((j >= End) || ((*this->_input)[i] <= (*this->_input)[j])))
+			(*this->_output)[k] = (*this->_input)[i++];
+		else
+			(*this->_output)[k] = (*this->_input)[j++];
+	}
+
+	delete this->_input;
 }
 
 

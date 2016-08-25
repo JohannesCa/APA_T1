@@ -6,6 +6,9 @@
  */
 
 #include <iostream>
+#include "Selection.h"
+#include "Insertion.h"
+#include "Merge.h"
 
 using namespace std;
 
