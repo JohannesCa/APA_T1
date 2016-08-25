@@ -2,7 +2,7 @@
 
 # Autor: Johannes Cavalcante
 
-declare -a method=("selection" "insertion" "merge" "quick" "heap")
+declare -a method=("selection" "insertion" "merge" "quick" "heap" "default")
 declare -a entropy=("10" "50" "90")
 declare -a elements=("100000" "500000" "1000000")
 declare -a ex=("1" "2" "3" "4" "5")

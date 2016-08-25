@@ -11,6 +11,7 @@
 #include "Merge.h"
 #include "Quick.h"
 #include "Heap.h"
+#include "Defaut.h"
 
 using namespace std;
 
@@ -22,7 +23,8 @@ void help(const char *prog)
 			"\t- insertion\n"
 			"\t- merge\n"
 			"\t- quick\n"
-			"\t- heap\n\n";
+			"\t- heap\n"
+			"\t- default (stl default)\n\n";
 
 }
 
@@ -65,6 +67,10 @@ int main(int argc, char** argv)
 
 	}else if(method == "heap"){
 		Sort::Heap sort(fName, fPath);
+		sort.genLog();
+
+	}else if(method == "default"){
+		Sort::Default sort(fName, fPath);
 		sort.genLog();
 
 	}else{
